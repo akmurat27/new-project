@@ -36,17 +36,21 @@
                 <span>ОТЧЁТ</span>
             </router-link>
         </div>
-        <h1 class="author">O.K.Tuliýewa</h1>
+        
+        <div class="flex"></div>
+        
+        <span class="author">O.K.Tuliýewa</span>
     </aside>
 </template>
 
 <style lang="scss" scoped>
 @import "@/styles/variables.scss";
 aside{
+    display: flex;
+    flex-direction: column;
     width: 300px;
     min-height: 100vh;
     padding: 10px;
-    font-weight: lighter;
     background: white;
     font-family: $font-family;
     h1{
@@ -57,6 +61,9 @@ aside{
         font-size: 18px;
         font-weight: bold;
         margin: 1rem 0 0 0;
+    }
+    .flex{
+        flex: 1 1 0;
     }
     .line{
         width: 100%;
