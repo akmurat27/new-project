@@ -17,13 +17,13 @@
         <div class="content">
             <div class="nav-bar">
                 <router-link to="/">GIRIŞ</router-link>
-                <router-link to="/about">ÇYKYŞ</router-link>
+                <router-link to="/loginRegister">ÇYKYŞ</router-link>
                 <router-link to="/contact">IÇKI</router-link>
             </div>
 
             <div class="main-content">
                 <div class="main-info">
-                    <h1>ESASY MAGLUMATLAR</h1>
+                    <span>ESASY MAGLUMATLAR</span>
 
                     <div class="separator"></div>
 
@@ -104,7 +104,10 @@
                     <span>RESMINAMA</span>
                     <div class="line"></div>
                     <div class="info-item">
-                        <p><span>Info Item 1:</span> Description for info item 1.</p>
+                        <img src="@/assets/additional-info/backup.png" alt="backup" class="image">
+                        <span>Faýllary şu ýere goýuň</span>
+                        <span>ÝA-DA</span>
+                        <button class="btn">Saýlaň</button>
                     </div>
                 </div>
             </div>
@@ -176,12 +179,12 @@ export default {
             display: flex;
             padding: 20px;
             .main-info {
-                width: 1550px;
+                width: 100%;
                 .first-section {
                     display: flex;
                     align-items: center;
-                    width: 60%;
-                    margin: auto;
+                    width: 65%;
+                    margin: 20px auto;
                     span{
                         width: 170px;
                         text-align: end;
@@ -215,18 +218,18 @@ export default {
                     }
                 }
                 .second-section {
-                    width: 60%;
+                    width: 100%;
                     margin: 20px auto;
                     display: flex;
                     align-items: center;
-                    justify-content: space-between;
+                    justify-content: flex-end;
                     span{
-                        width: 170px;
                         text-align: end;
+                        margin-right: 40px;
                     }
                     select{
                         padding: 8px 12px;
-                        width: 725px;
+                        width: 65%;
                     }
                     .error {
                         border: 2px solid red;
@@ -238,18 +241,17 @@ export default {
                     }
                 }
                 .third-section{
-                    width: 60%;
-                    margin: auto;
+                    width: 100%;
+                    margin: 20px auto;
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     .third-section-title {
                         width: 170px;
-                        text-align: end;
                     }
                     .third-section-content {
                         .input-field{
-                            width: 700px;
+                            width: 800px;
                             padding: 8px 12px;
                             border: 1px solid #ccc;
                             border-radius: 3px;
@@ -295,38 +297,57 @@ export default {
                 }
 
                 .line-1 {
-                    width: 725px;
+                    width: 65%;
                     margin: auto;
-                    margin-left: 33%;
+                    margin-left: 35%;
                     height: 1px;
                     background: darken(#eee, 5%);
                 }
                 
+                .separator {
+                    height: 1px;
+                    background: darken(#eee, 5%);
+                    margin: 1rem 0;
+                    width: 100%;
+                }
             }
 
             .additional-info {
-                width: 365px;
-                margin-top: 21.44px;
-                span{
-                    font-weight: bold;
-                    font-size: 32px;
-                }
+                width: 100%;
+                margin: 0 auto;
+                margin-left: 3rem;
                 .info-item {
+                    height: 60%;
                     background: lightblue;
+                    border: dotted;
+                    color: red;
                     border-radius: 3px;
-
+                    padding: 8px 12px;
+                    margin-bottom: 8px;
+                    display: flex;
+                    justify-content: space-evenly;
+                    flex-direction: column;
+                    align-items: center;
+                    .image{
+                        color: white;
+                        filter: invert(1) brightness(1000%);
+                        max-width: 100px;
+                        max-height: 100px;
+                    }
                     span {
-                        font-weight: bold;
+                        font-size: 18px;
+                        color: white;
+                    }
+                    .btn{
+                        font-size: 18px;
+                        width: 180px;
+                        height: 50px;
+                        border: none;
+                        border-radius: 5px;
+                        background: white;
+                        color: lightblue;
                     }
                 }
-            }
-            .separator {
-                height: 1px;
-                background: darken(#eee, 5%);
-                margin: 1rem 0;
-            }
-            p {
-                margin: 1rem 0;
             }
         }
     }
