@@ -73,7 +73,7 @@
                 <label>Giriş</label>
               </div>
               <div class="input-section">
-                <input type="text" placeholder="Çykyş" class="input-field">
+                <input type="text" placeholder="Giriş" class="input-field">
               </div>
             </div>
 
@@ -180,7 +180,7 @@
         
         .form-action{
           width: 100%;
-          max-width: 700px;
+          max-width: 1000px;
           margin: 0 auto;
           margin-right: 0;
           padding: 20px;

@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import EmailDetails from './EmailDetails.vue';
+
+</script>
+
 <template>
     <aside>
         <h1>Türkmenistanyň Ýokary gözegçilik edarasy</h1>
@@ -7,7 +12,7 @@
                 <img src="@/assets/sidebar/add-file.png" class="image">
                 <span>TÄZE RESMINAMA</span>
             </router-link>
-            <router-link class="button" to="/about">
+            <router-link class="button" to="/inbox/1">
                 <img src="@/assets/sidebar/inbox.png" class="image">
                 <span>GIRIŞ HATLAR</span>
             </router-link>
@@ -27,11 +32,11 @@
                 <img src="@/assets/sidebar/archive.png" class="image">
                 <span>ARHIW</span>
             </router-link>
-            <router-link class="button" to="/contact">
+            <router-link class="button" to="/Arzalar">
                 <img src="@/assets/sidebar/archive.png" class="image">
                 <span>ARZALAR</span>
             </router-link>
-            <router-link class="button" to="/contact">
+            <router-link class="button" to="/Report">
                 <img src="@/assets/sidebar/archive.png" class="image">
                 <span>ОТЧЁТ</span>
             </router-link>
@@ -76,9 +81,11 @@ aside{
         flex-direction: column;
         .button{
             padding: 8px 12px;
+            margin: 10px 0px;
             text-decoration: none;
             color: #333;
-
+            display: flex;
+            align-items: center;
             span{
                 margin-left: 12px;
                 font-weight: bold;

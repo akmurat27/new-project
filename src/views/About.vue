@@ -172,7 +172,7 @@
         
         .form-action{
           width: 100%;
-          max-width: 700px;
+          max-width: 1000px;
           margin: 0 auto;
           margin-right: 0;
           padding: 20px;
