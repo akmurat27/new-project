@@ -1,355 +1,293 @@
 <template>
-    <main class="home-page">
-        <div class="nav-icons">
-            <router-link to="/">
-                <img src="@/assets/documents/search.png" alt="Home">
-            </router-link>
-            <router-link to="/about">
-                <img src="@/assets/documents/bell.png" alt="About">
-            </router-link>
-            <router-link to="/contact">
-                <img src="@/assets/documents/office-worker.png" alt="Contact">
-            </router-link>
-        </div>
+  <main class="home-page">
+    <div class="nav-icons">
+        <router-link to="/">
+          <img src="@/assets/documents/search.png" alt="Home">
+        </router-link>
+        <router-link to="/about">
+          <img src="@/assets/documents/bell.png" alt="About">
+        </router-link>
+        <router-link to="/contact">
+          <img src="@/assets/documents/office-worker.png" alt="Contact">
+        </router-link>
+    </div>
 
-        <div class="line"></div>
+    <div class="line"></div>
 
-        <div class="content">
-            <div class="nav-bar">
-                <router-link to="/">GIRIŞ</router-link>
-                <router-link to="/loginRegister">ÇYKYŞ</router-link>
-                <router-link to="/contact">IÇKI</router-link>
+    <div class="about-section">
+      <div class="nav-bar">
+        <router-link to="/">GIRIŞ</router-link>
+        <router-link to="/about">ÇYKYŞ</router-link>
+        <router-link to="/contact">IÇKI</router-link>
+      </div>
+      <div class="main-content-header">
+        <div class="form-container">
+
+          <h1 class="form-title">ESASY MAGLUMATLAR</h1>
+          <div class="line"></div>
+          <form action="" class="form-action">
+            
+            <div class="form-group">
+              <label for="name">Görnüşi</label>
+              <div class="list-group">
+                <button class="btn">
+                  <span>ÝURIDIKI ŞAHS</span>
+                </button>
+                <button class="btn">
+                  <span>FIZIKI ŞAHS</span>
+                </button>
+              </div>
             </div>
 
-            <div class="main-content">
-                <div class="main-info">
-                    <span>ESASY MAGLUMATLAR</span>
-
-                    <div class="separator"></div>
-
-                    <div style="display: flex; flex-direction: column; justify-content: space-around;">
-
-                        <div class="first-section">
-                            <span>Görnüşi</span>
-                            <div class="nav-links">
-                                <div class="first-link">
-                                    <router-link to="/more-info">ÝURIDIKI ŞAHS</router-link>
-                                </div>
-                                <div class="second-link">
-                                    <router-link to="/more-info">FIZIKI ŞAHS</router-link>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="second-section">
-                            <span>Bölüm</span>
-
-                            <select v-model="selectedNumbers" id="numbers" :class="{'error': !selectedNumbers}">
-                                <option value="" disabled>Select a number</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-
-                            <!-- <p v-if="!selectedNumbers && !isTouched" class="error-text">Hökman doldurmaly</p> -->
-                        </div>
-                        <div class="third-section">
-                            <div class="third-section-title">
-                                <span>Kimden</span>
-                            </div>
-                            <div class="third-section-content">
-                                <input type="text" placeholder="Kimden" class="input-field">
-                            </div>
-                        </div>
-                        <div class="fourth-section">
-                            <div class="fourth-section-title"> 
-                                <span>Çykyş</span>
-                            </div>
-                            <div>
-                                <input type="text" placeholder="Senesi" class="input-field-1">
-                                <input type="text" placeholder="belgisi" class="input-field-2">
-                            </div>
-                        </div>
-                        
-                        <div class="line-1"></div>
-
-                        <div class="fourth-section">
-                            <div class="fourth-section-title">
-                                <span>Giriş</span>
-                            </div>
-                            <div>
-                                <input type="text" placeholder="Senesi" class="input-field-1">
-                                <input type="text" placeholder="belgisi" class="input-field-2">
-                            </div>
-                        </div>
-                        <div class="fourth-section">
-                            <div class="fourth-section-title">
-                                <span>Düşündiriş</span>
-                            </div>
-                            <div>
-                                <textarea name="" id="" class="input-field-1"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="fourth-section">
-                            <div class="fourth-section-title">
-                                <span>Baglamak</span>
-                            </div>
-                            <div>
-                                <input type="text" placeholder="DID" class="input-field-1">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="additional-info">
-                    <span>RESMINAMA</span>
-                    <div class="line"></div>
-                    <div class="info-item">
-                        <img src="@/assets/additional-info/backup.png" alt="backup" class="image">
-                        <span>Faýllary şu ýere goýuň</span>
-                        <span>ÝA-DA</span>
-                        <button class="btn">Saýlaň</button>
-                    </div>
-                </div>
+            <div class="form-group">
+              <label for="text">Bölüm</label>
+              <select name="" id="">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
             </div>
-        </div>
+            <div class="form-group">
+              <div class="">
+                  <label>Kimden</label>
+              </div>
+              <div class="input-section">
+                <input type="text" placeholder="Kimden" class="input-field">
+              </div>
+            </div>
 
-    </main>
+            <div class="form-group">
+              <div class="">
+                <label>Çykyş</label>
+              </div>
+              <div class="input-section">
+                <input type="text" placeholder="Çykyş" class="input-field">
+              </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="form-group">
+              <div class="">
+                <label>Giriş</label>
+              </div>
+              <div class="input-section">
+                <input type="text" placeholder="Çykyş" class="input-field">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="">
+                <label>Düşündiriş</label>
+              </div>
+              <div class="input-section">
+                <textarea name="" id="" class="input-field-1"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="fourth-section-title">
+                <label>Baglamak</label>
+              </div>
+              <div class="input-section">
+                <input type="text" placeholder="DID" class="input-field-1">
+              </div>
+            </div>
+
+          </form>
+          <div class="register">
+            <button class="register-btn">REGISTRASIÝA</button>
+          </div>
+        </div>
+        <div class="additional-info">
+          <div class="text">
+            <span>RESMINAMA</span>
+            </div>
+          <div class="line"></div>
+          <div class="info-item">
+            <img src="@/assets/additional-info/backup.png" alt="backup" class="image">
+            <span>Faýllary şu ýere goýuň</span>
+            <span>ÝA-DA</span>
+            <button class="btn">Saýlaň</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            selectedNumbers: null, // Значение по умолчанию
-            isTouched: false
-        };
-    },
-    watch: {
-        selectedNumbers(newValue) {
-            // Отслеживаем изменение значения и помечаем, что выбор был сделан
-            this.isTouched = true;
-        },
-    },
-};
 </script>
 
 <style lang="scss" scoped>
 .home-page {
-    .nav-icons {
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 20px;
-        img {
-            width: 24px;
-            height: 24px;
-            padding: 0 12px;
-        }
+  .nav-icons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    img {
+      width: 24px;
+      height: 24px;
+      padding: 0 12px;
+      cursor: pointer;
     }
-    .line {
+  }
+  .line {
+    width: 100%;
+    height: 1px;
+    background: darken(#eee, 5%);
+    margin-bottom: 20px;
+  }
+
+  .about-section {
+    width: 100%;
+    background: white;
+    .nav-bar {
+      width: 350px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      background-color: gray;
+      border-radius: 3px;
+      a {
+        padding: 10px;
+        text-decoration: none;
+        color: white;
         width: 100%;
-        height: 1px;
-        background: darken(#eee, 5%);
-        margin: 1rem 0;
-    }
-
-    .content {
-        height: calc(100vh - 100px);
-        background-color: white;
-        overflow: hidden;
-        border-radius: 8px;
-
-        .nav-bar {
-            width: 280px;
-            margin: 20px auto;
+        text-align: center;
+        font-size: 18px;
+        cursor: pointer;
+        &:hover {
+          background-color: black;
+        }
+      }
+     }
+     .main-content-header {
+      display: flex;
+      width: 100%;
+      .form-container {
+          width: 70%;
+          margin: 0 auto;
+          padding: 20px;
+          border-radius: 8px;
+          .form-title {
+            font-size: 32px;
+            font-weight: 100;
+            color: #333;
+          }
+        
+        .form-action{
+          width: 100%;
+          max-width: 700px;
+          margin: 0 auto;
+          margin-right: 0;
+          padding: 20px;
+          font-size: 22px;
+          .form-group {
             display: flex;
-            background-color: gray;
-            border-radius: 3px;
-            a {
-                padding: 10px;
-                text-decoration: none;
+            align-items: center;
+            margin: 2rem;
+            .list-group{
+              list-style: none;
+              justify-content: space-between;
+              align-items: center;
+              border-radius: 3px;
+              margin-left: 30px;
+              .btn{
+                background-color: gray;
+                padding: 16px 20px; 
+                border: none;
+                margin-right: 12px;
                 color: white;
-                width: 100%;
-                text-align: center;
+                cursor: pointer;
                 &:hover {
-                    background-color: black;
+                  background-color: black;
                 }
+              }
             }
-        }
-        .main-content {
-            display: flex;
-            padding: 20px;
-            .main-info {
+            select{
+              width: 100%;
+              padding: 16px; 
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              margin-left: 40px;
+            }
+            .input-section {
+              width: 100%;
+              margin-left: 40px;
+              .input-field, .input-field-1 {
                 width: 100%;
-                .first-section {
-                    display: flex;
-                    align-items: center;
-                    width: 65%;
-                    margin: 20px auto;
-                    span{
-                        width: 170px;
-                        text-align: end;
-                    }
-                    .nav-links {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        border-radius: 3px;
-                        margin-left: 30px;
-                        .first-link{
-                            text-align: center;
-                            background-color: gray;
-                            padding: 12px 16px;
-                            margin: 0 10px;
-                        }
-                        .second-link{
-                            text-align: center;
-                            background-color: gray;
-                            padding: 12px 16px;
-                        }
-                        a{
-                            text-decoration: none;
-                            color: white;
-                            margin: 0 10px;
-                            padding: 12px;
-                            &:hover {
-                                background: black;
-                            }
-                        }
-                    }
-                }
-                .second-section {
-                    width: 100%;
-                    margin: 20px auto;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
-                    span{
-                        text-align: end;
-                        margin-right: 40px;
-                    }
-                    select{
-                        padding: 8px 12px;
-                        width: 65%;
-                    }
-                    .error {
-                        border: 2px solid red;
-                    }
-
-                    .error-text {
-                        color: red;
-                        font-size: 14px;
-                    }
-                }
-                .third-section{
-                    width: 100%;
-                    margin: 20px auto;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    .third-section-title {
-                        width: 170px;
-                    }
-                    .third-section-content {
-                        .input-field{
-                            width: 800px;
-                            padding: 8px 12px;
-                            border: 1px solid #ccc;
-                            border-radius: 3px;
-                            &:focus {
-                                border-color: black;
-                                outline: none;
-                            }
-                        }
-                    }
-                }
-
-                .fourth-section {
-                    width: 60%;
-                    margin: 20px auto;
-                    display: flex;
-                    align-items: center;
-                    .fourth-section-title {
-                        width: 170px;
-                        text-align: end;
-                        margin-right: 35px;
-                    }
-                    .input-field-1{
-                        width: 300px;
-                        padding: 8px 12px;
-                        border: 1px solid #ccc;
-                        border-radius: 3px;
-                        margin-right: 30px;
-                        &:focus {
-                            border-color: black;
-                            outline: none;
-                        }
-                    }
-                    .input-field-2{
-                        width: 150px;
-                        padding: 8px 12px;
-                        border: 1px solid #ccc;
-                        border-radius: 3px;
-                        &:focus {
-                            border-color: black;
-                            outline: none;
-                        }
-                    }
-                }
-
-                .line-1 {
-                    width: 65%;
-                    margin: auto;
-                    margin-left: 35%;
-                    height: 1px;
-                    background: darken(#eee, 5%);
-                }
-                
-                .separator {
-                    height: 1px;
-                    background: darken(#eee, 5%);
-                    margin: 1rem 0;
-                    width: 100%;
-                }
+                padding: 16px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+              }
             }
-
-            .additional-info {
-                width: 100%;
-                margin: 0 auto;
-                margin-left: 3rem;
-                .info-item {
-                    height: 60%;
-                    background: lightblue;
-                    border: dotted;
-                    color: red;
-                    border-radius: 3px;
-                    padding: 8px 12px;
-                    margin-bottom: 8px;
-                    display: flex;
-                    justify-content: space-evenly;
-                    flex-direction: column;
-                    align-items: center;
-                    .image{
-                        color: white;
-                        filter: invert(1) brightness(1000%);
-                        max-width: 100px;
-                        max-height: 100px;
-                    }
-                    span {
-                        font-size: 18px;
-                        color: white;
-                    }
-                    .btn{
-                        font-size: 18px;
-                        width: 180px;
-                        height: 50px;
-                        border: none;
-                        border-radius: 5px;
-                        background: white;
-                        color: lightblue;
-                    }
-                }
-            }
+          }
         }
+        
+        .register {
+          margin-top: 20px;
+          .register-btn {
+            padding: 16px 32px;
+            background-color: white;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            &:hover {
+              background-color: #0056b3;
+              color: white;
+            }
+          }
+        }
+      }
+      .additional-info {
+      width: 30%;
+      padding: 20px;
+      border-radius: 8px;
+      .text {
+        font-size: 32px;
+        font-weight: 100;
+        color: #333;
+        padding: 20px 0;
+      }
+      .info-item {
+        height: 60%;
+        background: lightblue;
+        border: dotted;
+        color: red;
+        border-radius: 3px;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        .image{
+          color: white;
+          filter: invert(1) brightness(1000%);
+          max-width: 100px;
+          max-height: 100px;
+        }
+        span {
+          font-size: 22px;
+          color: white;
+        }
+        .btn{
+          font-size: 18px;
+          width: 180px;
+          height: 50px;
+          border: none;
+          border-radius: 5px;
+          background: white;
+          color: lightblue;
+          }
+        }
+      }
     }
-}
+  }
+} 
 </style>
