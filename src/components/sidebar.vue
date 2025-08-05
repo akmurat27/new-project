@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import EmailDetails from './EmailDetails.vue';
-
-</script>
 
 <template>
     <aside>
@@ -16,7 +12,7 @@ import EmailDetails from './EmailDetails.vue';
                 <img src="@/assets/sidebar/inbox.png" class="image">
                 <span>GIRIŞ HATLAR</span>
             </router-link>
-            <router-link class="button" to="/contact">
+            <router-link class="button" to="/">
                 <img src="@/assets/sidebar/outbox.png" class="image">
                 <span>ÇYKYŞ HATLAR</span>
             </router-link>

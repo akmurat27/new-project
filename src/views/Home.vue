@@ -28,7 +28,9 @@
           <form action="" class="form-action">
             
             <div class="form-group">
-              <label for="name">Görnüşi</label>
+              <div class="form-label">
+                <label for="name">Görnüşi</label>
+              </div>
               <div class="list-group">
                 <button class="btn">
                   <span>ÝURIDIKI ŞAHS</span>
@@ -40,7 +42,9 @@
             </div>
 
             <div class="form-group">
-              <label for="text">Bölüm</label>
+              <div class="form-label">
+                <label for="text">Bölüm</label>
+              </div>
               <select name="" id="">
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -49,8 +53,8 @@
               </select>
             </div>
             <div class="form-group">
-              <div class="">
-                  <label>Kimden</label>
+              <div class="form-label">
+                <label>Kimden</label>
               </div>
               <div class="input-section">
                 <input type="text" placeholder="Kimden" class="input-field">
@@ -58,7 +62,7 @@
             </div>
 
             <div class="form-group">
-              <div class="">
+              <div class="form-label">
                 <label>Çykyş</label>
               </div>
               <div class="input-section">
@@ -66,10 +70,10 @@
               </div>
             </div>
 
-            <div class="line"></div>
+            <div class="line-1"></div>
 
             <div class="form-group">
-              <div class="">
+              <div class="form-label">
                 <label>Giriş</label>
               </div>
               <div class="input-section">
@@ -78,7 +82,7 @@
             </div>
 
             <div class="form-group">
-              <div class="">
+              <div class="form-label">
                 <label>Düşündiriş</label>
               </div>
               <div class="input-section">
@@ -87,7 +91,7 @@
             </div>
 
             <div class="form-group">
-              <div class="fourth-section-title">
+              <div class="form-label">
                 <label>Baglamak</label>
               </div>
               <div class="input-section">
@@ -109,7 +113,8 @@
             <img src="@/assets/additional-info/backup.png" alt="backup" class="image">
             <span>Faýllary şu ýere goýuň</span>
             <span>ÝA-DA</span>
-            <button class="btn">Saýlaň</button>
+            <button class="btn" @click="uploadFile" :disabled="!selectedFile">Saýlaň</button>
+            <p v-if="uploadStatus">Статус: {{ uploadStatus }}</p>
           </div>
     
         </div>
@@ -118,7 +123,42 @@
   </main>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const selectedFile = ref<File | null>(null);
+const uploadStatus = ref<string>('');
+
+// Обработчик выбора файла
+const handleFileUpload = (event: Event) => {
+  const input = event.target as HTMLInputElement;
+  if (input.files && input.files[0]) {
+    selectedFile.value = input.files[0];
+  }
+};
+
+// Функция загрузки файла на сервер
+const uploadFile = async () => {
+  if (!selectedFile.value) return;
+  const formData = new FormData();
+  formData.append('file', selectedFile.value);
+
+  try {
+    uploadStatus.value = 'Загрузка...';
+    const response = await fetch('http://localhost:5000/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (response.ok) {
+      uploadStatus.value = 'Документ загружен успешно!';
+    } else {
+      uploadStatus.value = 'Ошибка при загрузке документа';
+    }
+  } catch (error) {
+    uploadStatus.value = 'Ошибка при загрузке документа';
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -135,7 +175,6 @@
     }
   }
   .line {
-    width: 100%;
     height: 1px;
     background: darken(#eee, 5%);
     margin-bottom: 20px;
@@ -172,6 +211,13 @@
           margin: 0 auto;
           padding: 20px;
           border-radius: 8px;
+          .line-1 {
+            width: 85%;
+            margin: 0 auto;
+            margin-right: 0 ;
+            height: 1px;
+            background: darken(#eee, 5%);
+          }
           .form-title {
             font-size: 32px;
             font-weight: 100;
@@ -189,7 +235,12 @@
             display: flex;
             align-items: center;
             margin: 2rem;
+            .form-label{
+              width: 100px;
+              text-align: end;
+            }
             .list-group{
+              width: 100%;
               list-style: none;
               justify-content: space-between;
               align-items: center;
@@ -284,10 +335,15 @@
           border-radius: 5px;
           background: white;
           color: lightblue;
+          cursor: pointer;
+          &:hover {
+            background: black;
+            color: white;
           }
         }
       }
     }
   }
+}
 } 
 </style>

@@ -19,7 +19,7 @@
                 <div class="inbox-item">
                     <router-link to="/inbox/1">Umumy maglumatlar</router-link>
                 </div>
-                <div class="inbox-item">
+                <div class="inbox-item" style="margin-left: 12px;">
                     <router-link to="/inbox/2">Resminama dolanşygy</router-link>
                 </div>
             </div>
@@ -63,32 +63,29 @@
     }
 
     .inbox-content {
+        margin-top: 40px;
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         .nav-items-1 {
+            width: 445px;
             display: flex;
             .inbox-item{
-                padding: 8px 12px;
                 a{
                     text-decoration: none;
                     font-size: 22px;
                     color: rgb(117, 185, 207);
                 }
                 &:hover {
-                    background: white;
-                    a{
-                    
+                    a{    
                         color: black;
                     }
                 }
                 .router-link-exact-active {
+                    padding: 12px;
                     background: white;
-                    width: 100%;
                     color: black;
-                    font-weight: bold;
-                    padding: 8px 12px;
                 }
             }
         }
@@ -98,7 +95,7 @@
                 display: flex;
                 align-items: center;
                 gap: 5px;
-                padding: 8px 12px;
+                padding: 0px 12px;
                 a{
                     text-decoration: none;
                     font-size: 22px;
@@ -114,7 +111,7 @@
             .btn{
                 background: green;
                 border: none;
-                padding: 8px 22px;
+                padding: 0px 22px;
                 border-radius: 4px;
                 a{
                     font-size: 14px;

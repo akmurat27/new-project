@@ -15,21 +15,90 @@
 
                 <div class="line"></div>
 
-                <div>
-                    <h1>Türkmenistanyň Ylymlar akademiýasy</h1>
+                <div class="">
+                    <h1 style="margin-bottom: 10px;">Türkmenistanyň Ylymlar akademiýasy</h1>
+                    <span style="font-weight: bold;">Ýuridiki şahs</span>
                 </div>
-            </div>
+                <div class="container-box" style="width: 100%; margin: 20px 0;">
+
+                    <div class="section" style="display: flex; justify-content: space-between;">
+                        <div style="display: flex; flex-direction: column;">
+                            <span>Çykyş senesi</span>
+                            <span style="margin-top: 20px;">(DID:40554)</span>
+                        </div>
+                        <div class="links" style="display: flex; flex-direction: column; width: 50%;">
+                            <span>Iýul 30, 2025ý. (Çarşenbe)</span>
+                            <span style="font-weight: bold; margin-top: 10px;">№03/1287</span>
+                        </div>
+                    </div>
+
+                    <div class="line"></div>
+                    
+                    <div class="" style="display: flex; justify-content: space-between; margin: 20px 0;">
+                        <span>Giriş senesi</span>
+                        <div class="" style="width: 50%; display: flex; flex-direction: column;">
+                            <span>Iýul 30, 2025ý. (Çarşenbe)</span>
+                            <span style="font-weight: bold; margin-top: 10px;">№1984</span>
+                        </div>
+                    </div>
+                    
+                    <div class="" style="display: flex; justify-content: space-between; margin: 20px 0;" >
+                        <span>Kabul eden</span>
+                        <div style="display: flex; flex-direction: column; width: 50%;">
+                            <span>Ogulgerek Tuliýewa</span>
+                            <span style="font-weight: bold; margin-top: 10px;">Türkmenistanyň Ýokary gözegçilik edarasy - Hyzmat edýän işgärler</span>
+                        </div>
+                    </div>
+                    
+                    <div class="" style="display: flex; justify-content: space-between; margin: 20px 0;" >
+                        <span>Kime ýazylan</span>
+                        <span style="width: 50%;">Türkmenistanyň Ýokary gözegçilik edarasy</span>
+                    </div>
+                    
+                    <div class="" style="display: flex; justify-content: space-between; margin: 20px 0;">
+                        <span>Düşündiriş</span>
+                        <span style="width: 50%;">Maksatnamalaryň we bellenilen çäreleriň ýerine ýetirilişi barada</span>
+                    </div>
+                </div>
+            </div>  
 
             <div class="section-second">
                 <div class="second-title">
-                    <div>
-                        <span>Jemi: 5 sahypa</span>
-                    </div>
+                    <div class="nav-links">
+                        <div>
+                            <span>Jemi: 5 sahypa</span>
+                        </div>
 
-                    <div>
-                        <button class="btn"><span>GÖRMEK</span></button>
-                        <button class="btn"><span>ÝÜKLEMEK</span></button>
+                        <div>
+                            <button class="btn" @click="openDialog"><span>GÖRMEK</span></button>
+                            <button class="btn"><span>ÝÜKLEMEK</span></button>
+                        </div>
                     </div>
+                     <!-- Модальный диалог -->
+                    <div v-if="isDialogActive" class="dialog-overlay">
+                        <div class="dialog-content">
+                            <h2>Dialog</h2>
+                            <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+
+                            <!-- iframe в диалоге -->
+                            <div v-if="isIframeActive">
+                            <iframe
+                                src="demo_iframe.htm"
+                                width="100%"
+                                height="400"
+                                frameborder="0"
+                            ></iframe>
+                            </div>
+
+                            <div class="dialog-actions">
+                                <button @click="closeDialog">Close Dialog</button>
+                                <button @click="toggleIframe">Toggle Iframe</button>
+                            </div>
+                        </div>
+                    </div>
+                    <iframe src="demo_iframe.htm" height="500" title="Iframe Example" class="iframe-example"></iframe>
                 </div>
             </div>
         </div>
@@ -40,9 +109,33 @@
 import inbox from '@/components/inbox.vue';
 
 export default {
+    data() {
+        return {
+            // Указываем путь к документу
+            wordUrl: 'C:\\Users\\admin\\Desktop\\newdocument.docx', // Замените на свой URL
+            isDialogActive: false, // Флаг для контроля отображения диалога
+            isIframeActive: false, // Флаг для контроля отображения iframe
+        };
+    },
+    methods: {
+        openDialog() {
+            this.isDialogActive = true; // Открыть диалог
+        },
+        closeDialog() {
+            this.isDialogActive = false; // Закрыть диалог
+        },
+        toggleIframe() {
+            this.isIframeActive = !this.isIframeActive; // Переключить состояние iframe
+        },
+    },
     components: {
         inbox
-    }
+    },
+    computed: {
+        googleDocsViewerUrl() {
+            return `https://docs.google.com/gview?url=${encodeURIComponent(this.wordUrl)}&embedded=true`;
+        },
+    },
 }
 </script>
 
@@ -51,18 +144,19 @@ export default {
     .document-container {
         display: flex;
         padding: 20px;
-        margin: 10px 0px;
         background: lighten(#f5f5f5, 5%);
         h1 {
-            font-size: 18px;
-            margin: 0 0 40px 0;
+            font-size: 32px;
+            font-weight: 100;
+            margin: 0;
         }
-
+        span{
+            font-size: 22px;
+        }
         .section-first {
             width: 50%;
             display: flex;
             flex-direction: column;
-            margin-bottom: 20px;
             .first-title{
                 display: flex;
                 justify-content: space-between;
@@ -98,10 +192,48 @@ export default {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                flex-direction: column;
                 padding-left: 20px;
+                .dialog-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: rgba(0, 0, 0, 0.5); /* Прозрачный черный фон */
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .dialog-content {
+                    background-color: white;
+                    padding: 20px;
+                    border-radius: 8px;
+                    width: 300px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                }
+
+                .dialog-actions {
+                    margin-top: 20px;
+                    text-align: right;
+                }
+
                 span {
                     font-size: 22px;
                     color: black;
+                }
+
+                .nav-links{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+                .iframe-example {
+                    border: 1px solid #ccc;
+                    width: 100%;
+                    margin: 12px;
                 }
             }
             .btn {
@@ -109,7 +241,6 @@ export default {
                 background: rgb(117, 185, 207);
                 border: none;
                 border-radius: 4px;
-                color: white;
                 cursor: pointer;
                 margin: 10px;
                 span{

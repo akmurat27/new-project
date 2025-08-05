@@ -28,7 +28,9 @@
           <form action="" class="form-action">
             
             <div class="form-group">
-              <label for="name">Görnüşi</label>
+              <div class="form-label">
+                <label for="name">Görnüşi</label>
+              </div>
               <div class="list-group">
                 <button class="btn">
                   <span>ÝURIDIKI ŞAHS</span>
@@ -40,7 +42,9 @@
             </div>
 
             <div class="form-group">
-              <label for="text">Bölüm</label>
+              <div class="form-label">
+                <label for="text">Bölüm</label>
+              </div>
               <select name="" id="">
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -49,7 +53,7 @@
               </select>
             </div>
             <div class="form-group">
-              <div class="">
+              <div class="form-label">
                   <label>Kime</label>
               </div>
               <div class="input-section">
@@ -58,7 +62,7 @@
             </div>
 
             <div class="form-group">
-              <div class="">
+              <div class="form-label">
                 <label>Çykyş</label>
               </div>
               <div class="input-section">
@@ -66,10 +70,10 @@
               </div>
             </div>
 
-            <div class="line"></div>
+            <div class="line-1"></div>
 
             <div class="form-group">
-              <div class="">
+              <div class="form-label">
                 <label>Düşündiriş</label>
               </div>
               <div class="input-section">
@@ -78,7 +82,7 @@
             </div>
 
             <div class="form-group">
-              <div class="fourth-section-title">
+              <div class="form-label">
                 <label>Baglamak</label>
               </div>
               <div class="input-section">
@@ -137,8 +141,7 @@
     background: white;
     .nav-bar {
       width: 350px;
-      height: 50px;
-      margin: 20px auto;
+      margin: auto;
       display: flex;
       align-items: center;
       background-color: gray;
@@ -160,16 +163,22 @@
       display: flex;
       width: 100%;
       .form-container {
-          width: 70%;
+        width: 70%;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 8px;
+        .form-title {
+          font-size: 32px;
+          font-weight: 100;
+          color: #333;
+        }
+        .line-1 {
+          width: 85%;
           margin: 0 auto;
-          padding: 20px;
-          border-radius: 8px;
-          .form-title {
-            font-size: 32px;
-            font-weight: 100;
-            color: #333;
-          }
-        
+          margin-right: 0 ;
+          height: 1px;
+          background: darken(#eee, 5%);
+        }
         .form-action{
           width: 100%;
           max-width: 1000px;
@@ -181,6 +190,10 @@
             display: flex;
             align-items: center;
             margin: 2rem;
+            .form-label {
+              width: 100px;
+              text-align: end;
+            }
             .list-group{
               list-style: none;
               justify-content: space-between;
