@@ -26,11 +26,11 @@
             <div class="nav-items-2">
                 <div class="inbox-item">
                     <router-link to="/inbox/3">Bellenen</router-link>
-                    <img src="@/assets/inbox/toggle-button.png" alt="toggle" class="toggle-icon">
+                    <span class="material-icons" style="color: gray; font-size: 48px;">toggle_off</span>
                 </div>
                 <div class="inbox-item">
                     <router-link to="/inbox/4">Arhiw</router-link>
-                    <img src="@/assets/inbox/toggle-button.png" alt="toggle" class="toggle-icon">
+                    <span class="material-icons" style="color: gray; font-size: 48px;">toggle_off</span>
                 </div>
                 <button class="btn">
                     <router-link to="/inbox/5">ÜÝTGET</router-link>
@@ -69,10 +69,11 @@
         justify-content: space-between;
         align-items: center;
         .nav-items-1 {
-            width: 445px;
+            width: 100%;
             display: flex;
             .inbox-item{
                 a{
+                    padding: 12px;
                     text-decoration: none;
                     font-size: 22px;
                     color: rgb(117, 185, 207);
@@ -94,26 +95,22 @@
             .inbox-item{
                 display: flex;
                 align-items: center;
-                gap: 5px;
-                padding: 0px 12px;
                 a{
+                    padding: 0 10px;
                     text-decoration: none;
                     font-size: 22px;
                     color: rgb(117, 185, 207);
-                }
-                .toggle-icon {
-                    width: 40px;
-                    height: 40px;
-                    margin-left: 8px;
-                    cursor: pointer;
                 }
             }
             .btn{
                 background: green;
                 border: none;
-                padding: 0px 22px;
+                padding: 0px 12px;
                 border-radius: 4px;
+                margin: 0 10px;
+                margin-right: 0;
                 a{
+                    padding: 0 10px;
                     font-size: 14px;
                     font-weight: 500;
                     text-decoration: none;

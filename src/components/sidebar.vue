@@ -12,7 +12,7 @@
                 <img src="@/assets/sidebar/inbox.png" class="image">
                 <span>GIRIŞ HATLAR</span>
             </router-link>
-            <router-link class="button" to="/">
+            <router-link class="button" to="/about">
                 <img src="@/assets/sidebar/outbox.png" class="image">
                 <span>ÇYKYŞ HATLAR</span>
             </router-link>
@@ -32,9 +32,9 @@
                 <img src="@/assets/sidebar/archive.png" class="image">
                 <span>ARZALAR</span>
             </router-link>
-            <router-link class="button" to="/Report">
+            <router-link class="button" to="/emailTable">
                 <img src="@/assets/sidebar/archive.png" class="image">
-                <span>ОТЧЁТ</span>
+                <span>HASABATLAR</span>
             </router-link>
         </div>
         

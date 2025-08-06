@@ -27,6 +27,10 @@ const router = createRouter({
             path: '/inbox/2',
             component: DocumentLinks
         },
+        {
+            path: '/emailTable',
+            component: () => import('../components/emailTable.vue')
+        }
     ]
 })  
 

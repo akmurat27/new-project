@@ -27,7 +27,7 @@
                             <span style="margin-top: 20px;">(DID:40554)</span>
                         </div>
                         <div class="links" style="display: flex; flex-direction: column; width: 50%;">
-                            <span>Iýul 30, 2025ý. (Çarşenbe)</span>
+                            <span>{{ formattedDate }}</span>
                             <span style="font-weight: bold; margin-top: 10px;">№03/1287</span>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                     <div class="" style="display: flex; justify-content: space-between; margin: 20px 0;">
                         <span>Giriş senesi</span>
                         <div class="" style="width: 50%; display: flex; flex-direction: column;">
-                            <span>Iýul 30, 2025ý. (Çarşenbe)</span>
+                            <span>{{ formattedDate }}</span>
                             <span style="font-weight: bold; margin-top: 10px;">№1984</span>
                         </div>
                     </div>
@@ -79,13 +79,13 @@
                         <div class="dialog-content">
                             <h2>Dialog</h2>
                             <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             </p>
 
                             <!-- iframe в диалоге -->
                             <div v-if="isIframeActive">
                             <iframe
-                                src="demo_iframe.htm"
+                                :src="pdfUrl"
                                 width="100%"
                                 height="400"
                                 frameborder="0"
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                     </div>
-                    <iframe src="demo_iframe.htm" height="500" title="Iframe Example" class="iframe-example"></iframe>
+                    <iframe :src="pdfUrl" height="500" class="iframe-example"></iframe>
                 </div>
             </div>
         </div>
@@ -109,8 +109,17 @@
 import inbox from '@/components/inbox.vue';
 
 export default {
+    name: 'PdfViewer',
+
     data() {
+        const today = new Date();
+
         return {
+            pdfUrl: '/pdf/document.pdf',
+            today,
+            months: ["Ýanwar", "Fewral", "Mart", "Aprel", "Maý", "Iýun", "Iýul", "Awgust", "Sentýabr", "Oktýabr", "Noýabr", "Dekabr"],
+            weekdays: ["Duşenbe", "Sişenbe", "Çarşenbe", "Penşenbe", "Anna", "Şenbe", "Ýekşenbe"],
+
             // Указываем путь к документу
             wordUrl: 'C:\\Users\\admin\\Desktop\\newdocument.docx', // Замените на свой URL
             isDialogActive: false, // Флаг для контроля отображения диалога
@@ -132,8 +141,14 @@ export default {
         inbox
     },
     computed: {
-        googleDocsViewerUrl() {
-            return `https://docs.google.com/gview?url=${encodeURIComponent(this.wordUrl)}&embedded=true`;
+        formattedDate() {
+            const day = this.today.getDate();  // Day of the month
+            const month = this.months[this.today.getMonth()];  // Get month name
+            const year = this.today.getFullYear();  // Get year
+            const weekday = this.weekdays[this.today.getDay()];  // Get weekday name
+            
+            // Return in the format: "Month Day, Year (Weekday)"
+            return `${month} ${day}, ${year}ý. (${weekday})`;
         },
     },
 }

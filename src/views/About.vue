@@ -101,10 +101,27 @@
             </div>
           <div class="line"></div>
           <div class="info-item">
-            <img src="@/assets/additional-info/backup.png" alt="backup" class="image">
-            <span>Faýllary şu ýere goýuň</span>
-            <span>ÝA-DA</span>
-            <button class="btn">Saýlaň</button>
+            <div class="drop-zone" @dragover.prevent="onDragOver" @drop.prevent="onDrop">
+              <img src="@/assets/additional-info/backup.png" alt="backup" class="image">
+              <p>Faýllary şu ýere goýuň </p> 
+              <span>ÝA-DA</span>
+              <input 
+                type="file" 
+                ref="fileInput" 
+                @change="onFileSelect" 
+                hidden 
+              />
+              <button @click="openFileDialog">Saýlaň</button>
+
+              <div v-if="files.length">
+                <h3>Saýlanan faýllar:</h3>
+                <ul>
+                  <li v-for="(file, index) in files" :key="index">
+                    {{ file.name }}
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
     
         </div>
@@ -114,6 +131,41 @@
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      files: []
+    };
+  },
+  methods: {
+    // Обработчик события dragover (необходимо для разрешения drop)
+    onDragOver(event) {
+      event.preventDefault();
+    },
+
+    // Обработчик события drop
+    onDrop(event) {
+      const droppedFiles = event.dataTransfer.files;
+      if (droppedFiles.length) {
+        this.files = Array.from(droppedFiles);
+      }
+    },
+
+    // Обработчик события выбора файла
+    onFileSelect(event) {
+      const selectedFiles = event.target.files;
+      if (selectedFiles.length) {
+        this.files = Array.from(selectedFiles);
+      }
+    },
+
+    // Открытие диалога выбора файлов
+    openFileDialog() {
+      this.$refs.fileInput.click();
+    }
+  }
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -260,7 +312,7 @@
         padding: 20px 0;
       }
       .info-item {
-        height: 60%;
+        height: 40%;
         background: lightblue;
         border: dotted;
         color: red;
@@ -277,20 +329,55 @@
           max-width: 100px;
           max-height: 100px;
         }
-        span {
-          font-size: 22px;
-          color: white;
-        }
-        .btn{
-          font-size: 18px;
-          width: 180px;
-          height: 50px;
-          border: none;
-          border-radius: 5px;
-          background: white;
-          color: lightblue;
+        .drop-zone {
+          width: 400px;
+          height: 300px;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          text-align: center;
+          font-size: 16px;
+          color: #333;
+          transition: background-color 0.3s ease;
+          padding: 10px;
+          p {
+            margin: 0;
+            font-size: 22px;
+            color: white;
+          }
+          span{
+            font-size: 22px;
+            color: white;
+          }
+  
+          button {
+            font-size: 18px;
+            width: 180px;
+            height: 50px;
+            border: none;
+            border-radius: 5px;
+            background: white;
+            color: lightblue;
+            cursor: pointer;
+            &:hover {
+              background: black;
+              color: white;
+            }
+            
+          }
+          ul {
+            list-style-type: none;
+            padding: 0;
+          }
+  
+          li {
+            margin: 5px 0;
           }
         }
+
+      }
       }
     }
   }
