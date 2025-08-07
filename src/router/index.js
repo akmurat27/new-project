@@ -30,6 +30,16 @@ const router = createRouter({
         {
             path: '/emailTable',
             component: () => import('../components/emailTable.vue')
+        },
+        {
+            path: '/reportTable',
+            component: () => import('../components/reportTable.vue')
+        },
+        {
+            path: '/archive',
+            name: 'Archive',
+            component: () => import('../components/archive.vue'),
+            props: route => ({ archivedEmails: route.query.archivedEmails ? JSON.parse(route.query.archivedEmails) : [] }) 
         }
     ]
 })  

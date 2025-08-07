@@ -24,11 +24,11 @@
                 <img src="@/assets/sidebar/folder.png" class="image">
                 <span>IÇKI RESMINAMALAR</span>
             </router-link>
-            <router-link class="button" to="/contact">
+            <router-link class="button" to="/archive">
                 <img src="@/assets/sidebar/archive.png" class="image">
                 <span>ARHIW</span>
             </router-link>
-            <router-link class="button" to="/Arzalar">
+            <router-link class="button" to="/reportTable">
                 <img src="@/assets/sidebar/archive.png" class="image">
                 <span>ARZALAR</span>
             </router-link>
@@ -49,7 +49,8 @@
 aside{
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     min-height: 100vh;
     padding: 10px;
     background: white;

@@ -1,6 +1,6 @@
 <template>
   <div class="email-report">
-    <h1>Отчёт по письмам</h1>
+    <h1>Arzalar</h1>
     <p class="count">Количество писем: {{ filteredEmails.length }}</p>
 
     <!-- Поиск -->
@@ -30,65 +30,49 @@
         <button @click="sortEmails" class="btn">Сортировать</button>
       </div>
     </div>
-    <div class="section">
-      <h2>Aktivnye pisma</h2>
-      <table class="email-table">
-        <thead>
-          <tr>
-            <th>№</th>
-            <th>Отправитель</th>
-            <th>Дата</th>
-            <th>Тема</th>
-            <th>Прочитано</th>
-            <th>Архивировано</th>
-            <th>Удалить</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(email, index) in filteredEmails" :key="email.id">
-            <td>{{ index + 1 }}</td>
-            <td>{{ email.sender }}</td>
-            <td>{{ email.date }}</td>
-            <td>{{ email.subject }}</td>
-            <td>
-              <button @click="toggleReadStatus(email)" :class="{'btn-read': email.read, 'btn-unread': !email.read}">
-                {{ email.read ? 'Да' : 'Нет' }}
-              </button>
-            </td>
-            <td>
-              <button @click="archiveEmail(email)" :disabled="email.archived" class="btn btn-archive">
-                {{ email.archived ? 'Архивировано' : 'Архивировать' }}
-              </button>
-            </td>
-            <td>
-              <button @click="deleteEmail(email.id)" class="btn btn-delete">
-                Удалить
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- Кнопка перехода в архив -->
-    <div class="archive-btn-container">
-      <router-link to="/archive" class="btn btn-archive">
-        Перейти в архив
-      </router-link>
-    </div>
+    <table class="email-table">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Отправитель</th>
+          <th>Дата</th>
+          <th>Тема</th>
+          <th>Прочитано</th>
+          <th>Удалить</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(email, index) in filteredEmails" :key="email.id">
+          <td>{{ index + 1 }}</td>
+          <td>{{ email.sender }}</td>
+          <td>{{ email.date }}</td>
+          <td>{{ email.subject }}</td>
+          <td>
+            <button @click="toggleReadStatus(email)" :class="{'btn-read': email.read, 'btn-unread': !email.read}">
+              {{ email.read ? 'Да' : 'Нет' }}
+            </button>
+          </td>
+          <td>
+            <button @click="deleteEmail(email.id)" class="btn btn-delete">
+              Удалить
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
       emails: [
-        { id: 1, sender: 'example1@domain.com', date: '2025-08-01', subject: 'Счёт №12345', read: false, archived: false},
-        { id: 2, sender: 'example2@domain.com', date: '2025-08-02', subject: 'Заявка на отпуск', read: true, archived: false},
-        { id: 3, sender: 'example3@domain.com', date: '2025-08-03', subject: 'Отчёт за июль', read: false, archived: false},
-        { id: 4, sender: 'example4@domain.com', date: '2025-08-04', subject: 'Важно: дата сдачи отчета', read: true, archived: false},
-        { id: 5, sender: 'example5@domain.com', date: '2025-08-04', subject: 'Важно: дата сдачи отчета', read: true, archived: false},
+        { id: 1, sender: 'example1@domain.com', date: '2025-08-01', subject: 'Счёт №12345', read: false, },
+        { id: 2, sender: 'example2@domain.com', date: '2025-08-02', subject: 'Заявка на отпуск', read: true, },
+        { id: 3, sender: 'example3@domain.com', date: '2025-08-03', subject: 'Отчёт за июль', read: false,  },
+        { id: 4, sender: 'example4@domain.com', date: '2025-08-04', subject: 'Важно: дата сдачи отчета', read: true, },
+        { id: 5, sender: 'example5@domain.com', date: '2025-08-04', subject: 'Важно: дата сдачи отчета', read: true, },
       ],
       searchQuery: '',
       readFilter: 'all',
@@ -97,7 +81,7 @@ export default {
   },
   computed: {
     filteredEmails() {
-      let emails = this.emails.filter(email => !email.archived);
+      let emails = this.emails;
 
       // Фильтруем по поисковому запросу
       if (this.searchQuery) {
@@ -139,17 +123,7 @@ export default {
       // Принудительное обновление сортировки
       this.filteredEmails;
     },
-    archiveEmail(email) {
-      email.archived = true;
 
-      // Перенаправляем в архив с сериализованными архивированными письмами
-      this.$router.push({
-      path: '/archive',
-      query: {
-        archivedEmails: JSON.stringify(this.emails.filter(email => email.archived))
-      }
-      });
-    },
     deleteEmail(emailId) {
       this.emails = this.emails.filter(email => email.id !== emailId);
     }
@@ -159,18 +133,6 @@ export default {
 </script>
 
 <style scoped>
-.archive-btn-container {
-  margin-top: 20px;
-}
-
-.archive-btn-container .btn-archive {
-  background-color: #28a745;
-  color: white;
-}
-
-.archive-btn-container .btn-archive:hover {
-  background-color: #218838;
-}
 .email-report {
   font-family: 'Arial', sans-serif;
   margin: 20px;

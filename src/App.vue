@@ -24,6 +24,7 @@ button{
   background: none;
 }
 .app{
+  width: 100%;
   display: flex;
   background: $background;
   main{

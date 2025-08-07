@@ -6,16 +6,19 @@
                 <h1>Hasaba alan: </h1>
                 <h1>Kimden gelen: </h1>
             </div>
+            <chatApp />
         </div>
     </main>
 </template>
 
 <script>
 import inbox from '@/components/inbox.vue';
+import ChatApp from './chatApp.vue';        
 
 export default {
     components: {
-        inbox
+        inbox,
+        ChatApp
     }
 }
 </script>

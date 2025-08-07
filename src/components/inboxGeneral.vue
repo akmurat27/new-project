@@ -120,8 +120,6 @@ export default {
             months: ["Ýanwar", "Fewral", "Mart", "Aprel", "Maý", "Iýun", "Iýul", "Awgust", "Sentýabr", "Oktýabr", "Noýabr", "Dekabr"],
             weekdays: ["Duşenbe", "Sişenbe", "Çarşenbe", "Penşenbe", "Anna", "Şenbe", "Ýekşenbe"],
 
-            // Указываем путь к документу
-            wordUrl: 'C:\\Users\\admin\\Desktop\\newdocument.docx', // Замените на свой URL
             isDialogActive: false, // Флаг для контроля отображения диалога
             isIframeActive: false, // Флаг для контроля отображения iframe
         };
